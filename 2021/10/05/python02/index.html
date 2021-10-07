@@ -3,7 +3,7 @@
 
 	<head>
 		
-<title>02.基础语法(上)？-剪切板</title>
+<title>02.基础语法(上)-剪切板</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -139,7 +139,7 @@
     </ul>
     <div class="my_foot">
         
-        <a target="_blank" rel="noopener" href="https://github.com/qiaobug">
+        <a target="_blank" rel="noopener" href="https://github.com/ictrlx">
             <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
         </a>
         
@@ -251,7 +251,7 @@
             
             
         </ul>
-        <h1>02.基础语法(上)？</h1>
+        <h1>02.基础语法(上)</h1>
         <div class="article-info">
             <div class="article-author">
                 
@@ -272,7 +272,7 @@
 <div class="article-content">
     <div id="article" class="content">
         <p>学编程要想得心应手的应用，得先打好地基。要想入门，需要先掌握好基础语法。唯有扎好马步，方可练就上乘武功。<br>Python的马步，为简单的基础语法，上乘武功为数据分析、网络爬虫和Web系统。为了练好马步，我们先从编码规范蹲起。</p>
-<h3 id="4-1-编码规范"><a href="#4-1-编码规范" class="headerlink" title="4.1 编码规范"></a>4.1 编码规范</h3><p>优美胜于丑陋,明了胜于晦涩,简洁胜于复杂,复杂胜于凌乱,可读性真的很重要。为了提高代码的可读性，Python3将规范PEP8置入了运行环境中。在本节中提供的样例代码，你可以不懂，重点了解规范就好。到后面，你就会全部都懂了。<br>1.注释<br>说到可读性，不得不提代码的注释，那可是判断程序员是否合格的首要条件。编程不写注释的程序员，就是在耍流氓。当然，如果注释内容是错误的，那还不如没有注释，所以当一段代码发生变化时，第一件事就是去修改注释。<br>Python注释有单行和多行注释。单行注释用井号#开始，多行注释可用成对的三个双引号”””或三个单引号’’’标识，推荐使用双引号。</p>
+<h3 id="2-1-编码规范"><a href="#2-1-编码规范" class="headerlink" title="2.1 编码规范"></a>2.1 编码规范</h3><p>优美胜于丑陋,明了胜于晦涩,简洁胜于复杂,复杂胜于凌乱,可读性真的很重要。为了提高代码的可读性，Python3将规范PEP8置入了运行环境中。在本节中提供的样例代码，你可以不懂，重点了解规范就好。到后面，你就会全部都懂了。<br>1.注释<br>说到可读性，不得不提代码的注释，那可是判断程序员是否合格的首要条件。编程不写注释的程序员，就是在耍流氓。当然，如果注释内容是错误的，那还不如没有注释，所以当一段代码发生变化时，第一件事就是去修改注释。<br>Python注释有单行和多行注释。单行注释用井号#开始，多行注释可用成对的三个双引号”””或三个单引号’’’标识，推荐使用双引号。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">多行注释样例</span><br><span class="hljs-string">代码看看就好，反正吃不了</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-comment"># 传入账号和密码内容,成功返回True，否则返回False&#x27;&#x27;&#x27;</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>(<span class="hljs-params">account, psd</span>):</span><br>    <span class="hljs-keyword">if</span> account == <span class="hljs-string">&quot;admin&quot;</span> <span class="hljs-keyword">and</span> psd == <span class="hljs-string">&quot;123&quot;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br><br><span class="hljs-string">&#x27;&#x27;&#x27; 调用函数，输出返回结果&#x27;&#x27;&#x27;</span><br><span class="hljs-built_in">print</span>(login(<span class="hljs-string">&quot;admin&quot;</span>, <span class="hljs-string">&quot;123456&quot;</span>))<br></code></pre></td></tr></table></figure>
 <p>2.有段代码<br>不知是不是Python发明人考虑到程序员整天对着计算机，没人聊天太孤单，设计的程序代码段就像聊天一样，它说：说完就回车。<br>Python代码段，跟其他编程语言不同，不是用打括号{}包起来的，而是使用冒号(:)、缩进、回车来实现，这跟写文章是一样的形式。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 注册函数，代码段不用大&#123;&#125;包起来</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">register</span>(<span class="hljs-params">account, phone</span>):</span><br>    <span class="hljs-keyword">if</span> account == <span class="hljs-string">&quot;&quot;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;账号不能为空&quot;</span><br>    <span class="hljs-keyword">elif</span> phone == <span class="hljs-string">&quot;&quot;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;电话不能为空&quot;</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-comment"># 这里省略注册操作内容</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;注册成功&quot;</span><br></code></pre></td></tr></table></figure>
@@ -281,7 +281,7 @@
 <p>(5) 断行<br>除了长的导入模块语句和注释里的URL外，每行不超过80个字符。不要使用反斜杠去连接行。Python会将圆括号, 中括号和花括号中的行隐式的连接起来 , 你可以利用这个特点。如果需要, 你可以在表达式外围增加一对额外的圆括号。</p>
 <figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima"># 长内容，可用圆括号连接<br><span class="hljs-built_in">content</span> = (<span class="hljs-string">&quot;喜欢一个人在海边，卷起裤管光着脚丫踩在沙滩上。&quot;</span><br>           <span class="hljs-string">&quot;总是幻想海洋的尽头有另一个世界,总是以为勇敢的水手是真正的男儿。&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">content</span>)<br></code></pre></td></tr></table></figure>
 <p>好了，常用的规范就记住以上几点就好。想要完整版的《Python编程规范》，你可以给我留言，我私信发给你。从下一节开始，每行代码，你都要亲自动手敲一敲，搞懂才行哦。</p>
-<h3 id="4-2-变量和值"><a href="#4-2-变量和值" class="headerlink" title="4.2 变量和值"></a>4.2 变量和值</h3><p>程序总得要处理数据，处理数据就要用到内存，至于内存的大小和地址，由变量指定。变量，就是在程序运行过程中它的值是允许改变的量。<br>很多强类型语言，使用变量时，需要先声明才可以使用，而Python是弱类型语言，变量无需声明，直接赋值便可使用，Python解析器会根据初始化值进行推断并确定数据类型。<br>1.变量声明<br>Python中的变量赋值使用等号运算符”=”，并在它前后各留一个空格。变量使用过程中，可以任意改变值的内容，而且不限同一类型。<br>可以把整型值直接赋给字符串变量，也可以把字符串赋给浮点型变量。不用怀疑，她就是这么任性，比男人还善变。</p>
+<h3 id="2-2-变量和值"><a href="#2-2-变量和值" class="headerlink" title="2.2 变量和值"></a>2.2 变量和值</h3><p>程序总得要处理数据，处理数据就要用到内存，至于内存的大小和地址，由变量指定。变量，就是在程序运行过程中它的值是允许改变的量。<br>很多强类型语言，使用变量时，需要先声明才可以使用，而Python是弱类型语言，变量无需声明，直接赋值便可使用，Python解析器会根据初始化值进行推断并确定数据类型。<br>1.变量声明<br>Python中的变量赋值使用等号运算符”=”，并在它前后各留一个空格。变量使用过程中，可以任意改变值的内容，而且不限同一类型。<br>可以把整型值直接赋给字符串变量，也可以把字符串赋给浮点型变量。不用怀疑，她就是这么任性，比男人还善变。</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 变量直接赋值使用</span><br>come = <span class="hljs-string">&quot;我要变帅，要富有...&quot;</span><br><span class="hljs-builtin-name">print</span>(come)<br><span class="hljs-comment"># 改变变量内容</span><br>come = <span class="hljs-string">&quot;想得美&quot;</span><br><span class="hljs-builtin-name">print</span>(come)<br><span class="hljs-comment"># 改成整型内容</span><br>come = 999<br><span class="hljs-builtin-name">print</span>(come)<br><span class="hljs-comment"># 改成浮点数</span><br>come = 666.25<br><span class="hljs-builtin-name">print</span>(come)<br></code></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight erlang"><table><tr><td class="code"><pre><code class="hljs erlang">我要变帅，要富有...<br>想得美<br><span class="hljs-number">999</span><br><span class="hljs-number">666.25</span><br></code></pre></td></tr></table></figure>
@@ -290,7 +290,7 @@
 <p>输出结果</p>
 <figure class="highlight avrasm"><table><tr><td class="code"><pre><code class="hljs avrasm">  <span class="hljs-number">6</span>six = <span class="hljs-string">&quot;数字开头&quot;</span><br>     ^<br><span class="hljs-symbol">SyntaxError:</span> invalid syntax<br></code></pre></td></tr></table></figure>
 <p>4.关键字列表<br>Python内置了查询关键字的命令,打开【终端】，输入python(在macOS或Ubuntu系统为python3)，输入help()，输入keywords，即可获得关键字列表。<br>Here is a list of the Python keywords.  Enter any keyword to get more help.<br>False               class               from                or<br>None                continue            global              pass<br>True                def                 if                  raise<br>and                 del                 import              return<br>as                  elif                in                  try<br>assert              else                is                  while<br>async               except              lambda              with<br>await               finally             nonlocal            yield<br>break               for                 not              </p>
-<h3 id="4-3-数值类型"><a href="#4-3-数值类型" class="headerlink" title="4.3 数值类型"></a>4.3 数值类型</h3><p>数值类型，掰手指都可以数出来，数来数去，也就那几种。Python3支持的有整型int、浮点型float、布尔bool型、还有复数complex。<br>其中整型只有int一种，表示为长整型。如若无法确定变量属于哪种数据类型时，可通过Python内置的函数type()进行查询确定。<br>1.整型<br>整型就是指整数。整数有正数、有负数和0。在计算机中,整型可以用十进制、二进制(0B或0b开头)、八进制(0开头)、十六进制(0X或0x开头)进行表示。<br>进制表示中的开头是数字0，不是字母o，别搞混了。还有，在输出时，其他进制会自动转成十进制。 如果十进制要转成其他的，可使用内置函数：bin()、oct()、hex()。</p>
+<h3 id="2-3-数值类型"><a href="#2-3-数值类型" class="headerlink" title="2.3 数值类型"></a>2.3 数值类型</h3><p>数值类型，掰手指都可以数出来，数来数去，也就那几种。Python3支持的有整型int、浮点型float、布尔bool型、还有复数complex。<br>其中整型只有int一种，表示为长整型。如若无法确定变量属于哪种数据类型时，可通过Python内置的函数type()进行查询确定。<br>1.整型<br>整型就是指整数。整数有正数、有负数和0。在计算机中,整型可以用十进制、二进制(0B或0b开头)、八进制(0开头)、十六进制(0X或0x开头)进行表示。<br>进制表示中的开头是数字0，不是字母o，别搞混了。还有，在输出时，其他进制会自动转成十进制。 如果十进制要转成其他的，可使用内置函数：bin()、oct()、hex()。</p>
 <figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima"># 二进制整数<br>a = <span class="hljs-number">0b1110111</span><br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(type(a))<br># 十六进制整数<br>b = <span class="hljs-number">0X1b</span><br><span class="hljs-built_in">print</span>(b)<br><span class="hljs-built_in">print</span>(type(b))<br># 十进制转成十六进制<br>c = <span class="hljs-number">10</span><br><span class="hljs-built_in">print</span>(hex(c))<br></code></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><code class="hljs angelscript"><span class="hljs-number">119</span><br>&lt;<span class="hljs-keyword">class</span> &#x27;<span class="hljs-symbol">int</span>&#x27;&gt;<br><span class="hljs-symbol">27</span><br>&lt;<span class="hljs-symbol">class</span> &#x27;<span class="hljs-symbol">int</span>&#x27;&gt;<br><span class="hljs-symbol">0xa</span><br></code></pre></td></tr></table></figure>
@@ -306,7 +306,7 @@
 <figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 我是真的，真的...</span><br>b = <span class="hljs-literal">True</span><br><span class="hljs-builtin-name">print</span>(b)<br><span class="hljs-comment"># 确定数据类型</span><br><span class="hljs-builtin-name">print</span>(type(b))<br><span class="hljs-comment"># 改成假b = False</span><br><span class="hljs-builtin-name">print</span>(b)<br></code></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-literal">True</span><br>&lt;<span class="hljs-keyword">class</span> <span class="hljs-string">&#x27;bool&#x27;</span>&gt;<br><span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
-<h3 id="4-4-字符串"><a href="#4-4-字符串" class="headerlink" title="4.4 字符串"></a>4.4 字符串</h3><p>在开发过程中，经常会用到字符串来存储字符内容。在其他编程语言中用成对双引号” “声明字符串，用成对单引号’ ‘声明单个字符，而Python没有这种区别，它无论单个或多个字符都用字符串表示。字符串除了普通的内容，还有转义和原生。为了方便操作，Python提供了很多函数。<br>1.声明<br>Python可用单个双引号”或单引号’，也可以用三个双引号”””或单引号’’’声明字符串。推荐使用双引号。细心的你，不知注意到没?–三个双引号或单引号，不是注释用的吗？怎么字符串也用这个。是的，把内容赋值给变量时，就表示字符串。</p>
+<h3 id="2-4-字符串"><a href="#2-4-字符串" class="headerlink" title="2.4 字符串"></a>2.4 字符串</h3><p>在开发过程中，经常会用到字符串来存储字符内容。在其他编程语言中用成对双引号” “声明字符串，用成对单引号’ ‘声明单个字符，而Python没有这种区别，它无论单个或多个字符都用字符串表示。字符串除了普通的内容，还有转义和原生。为了方便操作，Python提供了很多函数。<br>1.声明<br>Python可用单个双引号”或单引号’，也可以用三个双引号”””或单引号’’’声明字符串。推荐使用双引号。细心的你，不知注意到没?–三个双引号或单引号，不是注释用的吗？怎么字符串也用这个。是的，把内容赋值给变量时，就表示字符串。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 用单个双引号</span><br>a = <span class="hljs-string">&quot;双引号&quot;</span><br><span class="hljs-built_in">print</span>(a, <span class="hljs-built_in">type</span>(a))<br><span class="hljs-comment"># 用单个单引号</span><br>b = <span class="hljs-string">&#x27;单引号&#x27;</span><br><span class="hljs-built_in">print</span>(b, <span class="hljs-built_in">type</span>(b))<br><span class="hljs-comment"># 用三个双引号</span><br>c = <span class="hljs-string">&quot;&quot;&quot;三个双引号&quot;&quot;&quot;</span><br><span class="hljs-built_in">print</span>(c, <span class="hljs-built_in">type</span>(c))<br><span class="hljs-comment"># 用三个单引号</span><br>d = <span class="hljs-string">&#x27;&#x27;&#x27;三个单引号&#x27;&#x27;&#x27;</span><br><span class="hljs-built_in">print</span>(d, <span class="hljs-built_in">type</span>(d))<br></code></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><code class="hljs angelscript">双引号 &lt;<span class="hljs-keyword">class</span> &#x27;<span class="hljs-symbol">str</span>&#x27;&gt;<br>单引号 &lt;<span class="hljs-symbol">class</span> &#x27;<span class="hljs-symbol">str</span>&#x27;&gt;<br>三个双引号 &lt;<span class="hljs-symbol">class</span> &#x27;<span class="hljs-symbol">str</span>&#x27;&gt;<br>三个单引号 &lt;<span class="hljs-symbol">class</span> &#x27;<span class="hljs-symbol">str</span>&#x27;&gt;<br></code></pre></td></tr></table></figure>
@@ -373,7 +373,7 @@
 <figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 字符左对齐</span><br>a = <span class="hljs-string">&quot;n&quot;</span><br><span class="hljs-builtin-name">print</span>(a.ljust(9, <span class="hljs-string">&quot;b&quot;</span>))<br><span class="hljs-comment"># 字符右对齐</span><br><span class="hljs-builtin-name">print</span>(a.rjust(9, <span class="hljs-string">&quot;c&quot;</span>))<br><span class="hljs-comment"># 字符中间对齐</span><br>d = a.center(9, <span class="hljs-string">&quot;d&quot;</span>)<br><span class="hljs-builtin-name">print</span>(d)<br><span class="hljs-comment"># 正数左边补0</span><br>z = <span class="hljs-string">&quot;5&quot;</span>.zfill(4)<br><span class="hljs-builtin-name">print</span>(z)<br><span class="hljs-comment"># 负数也可补0</span><br>z = <span class="hljs-string">&quot;-6&quot;</span>.zfill(4)<br><span class="hljs-builtin-name">print</span>(z)<br></code></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight diff"><table><tr><td class="code"><pre><code class="hljs diff">nbbbbbbbb<br>ccccccccn<br>ddddndddd<br>0005<br><span class="hljs-deletion">-006</span><br></code></pre></td></tr></table></figure>
-<p>基础语法，内容不多，为了减轻你的学习重力，我特意分了上了两部分。</p>
+<p>基础语法，内容较多，分了上了两部分。</p>
 
     </div>
 </div>
@@ -403,6 +403,13 @@
 </script>
 <div class="Last-Next">
     
+    <a href="/2021/10/07/python03/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>02.基础语法(下)</p>
+        </div>
+    </a>
+    
 
     
     <a href="/2021/09/30/python01/">
@@ -424,7 +431,7 @@
 	</div>
 	<div class="contact">
 		
-		<a target="_blank" rel="noopener" href="https://github.com/qiaobug">
+		<a target="_blank" rel="noopener" href="https://github.com/ictrlx">
 			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Coding">
 		</a>
 		
