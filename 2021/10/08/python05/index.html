@@ -333,7 +333,7 @@
 <p>输出结果</p>
 <figure class="highlight erlang-repl"><table><tr><td class="code"><pre><code class="hljs erlang-repl">OK!<br><span class="hljs-number">10</span>K<br></code></pre></td></tr></table></figure>
 <p>奥力给，列表到这就结束了，如果你觉得程序哪里不对，请一定要告诉我，反正我也不会改，你别憋出病来。有些没学会的朋友，可能会说：”老陈，你教的都是没用的东西”。那我只能回答你：“我不允许你这么说你自己”。不信的话，你接着看有关元组的内容。</p>
-<h3 id="6-2-元组"><a href="#6-2-元组" class="headerlink" title="6.2 元组"></a>6.2 元组</h3><p>元组与列表相似，不同之处在于它的元素是不可改变的，不可进行增删改的，也就是说元组一旦创建，便不可以编辑(增删改)其中的元素。虽然元素不允许删除，但可以使用del语句来删除整个元组。<br>1.元组声明<br>元组可通过小括号()或tuple()进行声明。里面没有元素时，为空元组。元组元素可以同时存在不同的数据类型。用()声明元组时，如果只有一个元素，后面要加逗号, 否则会被当作运算符处理。</p>
+<h3 id="4-2-元组"><a href="#4-2-元组" class="headerlink" title="4.2 元组"></a>4.2 元组</h3><p>元组与列表相似，不同之处在于它的元素是不可改变的，不可进行增删改的，也就是说元组一旦创建，便不可以编辑(增删改)其中的元素。虽然元素不允许删除，但可以使用del语句来删除整个元组。<br>1.元组声明<br>元组可通过小括号()或tuple()进行声明。里面没有元素时，为空元组。元组元素可以同时存在不同的数据类型。用()声明元组时，如果只有一个元素，后面要加逗号, 否则会被当作运算符处理。</p>
 <figure class="highlight excel"><table><tr><td class="code"><pre><code class="hljs excel"># 用()声明一个空元组<br><span class="hljs-built_in">t</span> = ()<br>print(<span class="hljs-built_in">type</span>(<span class="hljs-built_in">t</span>), <span class="hljs-built_in">t</span>)<br># 用tuple()声明一个空元组<br><span class="hljs-built_in">t</span> = tuple()<br>print(<span class="hljs-built_in">type</span>(<span class="hljs-built_in">t</span>), <span class="hljs-built_in">t</span>)<br># 支持不同数据类型<br><span class="hljs-built_in">t</span> = (<span class="hljs-string">&quot;化学&quot;</span>, <span class="hljs-number">100</span>, <span class="hljs-number">25.68</span>)<br>print(<span class="hljs-built_in">t</span>)<br># 只有一个元素,记得加,<br><span class="hljs-built_in">t</span> = (<span class="hljs-string">&quot;中文&quot;</span>,)<br>print(<span class="hljs-built_in">t</span>)<br></code></pre></td></tr></table></figure>
 <p>输出结果</p>
 <figure class="highlight lisp"><table><tr><td class="code"><pre><code class="hljs lisp">&lt;class &#x27;tuple&#x27;&gt; ()<br>&lt;class &#x27;tuple&#x27;&gt; ()<br>(&#x27;化学&#x27;, <span class="hljs-number">100</span>, <span class="hljs-number">25.68</span>)<br>(&#x27;中文&#x27;,)<br></code></pre></td></tr></table></figure>
@@ -403,12 +403,19 @@
 </script>
 <div class="Last-Next">
     
+    <a href="/2021/10/23/python06/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>04.数据结构(下)</p>
+        </div>
+    </a>
+    
 
     
-    <a href="/2021/10/08/python06/">
+    <a href="/2021/10/07/python04/">
         <div class="next">
             <span>下一篇</span>
-            <p>04.数据结构(下)</p>
+            <p>03.控制语句</p>
         </div>
     </a>
     
