@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+<title>05.函数详解-剪切板</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+
+<meta name="keywords" content="Python,日积月累,">
+<meta name="description" content="Python核心知识点.">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+	<meta name="generator" content="Hexo 5.4.0"></head>
+
+	<body>
+		
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+
+<link rel="stylesheet" href="/css/header.css">
+
+	<div class="header">
+		<div class="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="CtrlX">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										首页
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										归档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										目录
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										标签
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										链接
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										关于
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Dr.Qiu</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <a href="/categories">目录</a>
+        </li>
+        
+        <li>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <a href="/links">链接</a>
+        </li>
+        
+        <li>
+            <a href="/about">关于</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/ictrlx">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'
+    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
+</div>
+<style>
+    .sidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
+</script>
+		<script>
+			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
+		</script>
+<div class="header-bg ">
+    <div class="bg-content">
+        <ul class="tag">
+            
+            
+            <li><a href="/tags/Python">Python</a></li>
+            
+            <li><a href="/tags/日积月累">日积月累</a></li>
+            
+            
+        </ul>
+        <h1>05.函数详解</h1>
+        <div class="article-info">
+            <div class="article-author">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <g>
+                        <path fill="#12183A"
+                            d="M6.187 15.265A6.47 6.47 0 0 0 10 16.5a6.47 6.47 0 0 0 3.813-1.235A4.99 4.99 0 0 0 10 13.5a4.99 4.99 0 0 0-3.813 1.765zM5.082 14.25A6.485 6.485 0 0 1 10 12c1.965 0 3.726.872 4.918 2.25a6.5 6.5 0 1 0-9.836 0zM10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                        </path>
+                    </g>
+                </svg>
+                
+                <span> <a href="">Dr.Qiu</a></span>
+                <p>2021-10-25 22:05:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article-content">
+    <div id="article" class="content">
+        <p>函数是组织好的，可重复使用的，用来实现单一和相关联功能的代码段。函数能提高应用的模块性和代码的重复利用率。在这之前我们已多次使用内置函数，如print()。当然，咱们也可以自定义函数。</p>
+<h3 id="5-1-函数语法"><a href="#5-1-函数语法" class="headerlink" title="5.1 函数语法"></a>5.1 函数语法</h3><p>函数代码以def关键词开关，后接函数标识符名称和圆括号()，通过return[表达式]结束，选择性地返回一个值给调用方，不带表达式的return相当于返回None。其语法结构为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> 函数名(<span class="hljs-params">参数列表</span>):</span><br>执行语句<span class="hljs-number">1</span><br>执行语句…<br><span class="hljs-keyword">return</span> [表达式]<br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 自定义函数</span><br>def <span class="hljs-builtin-name">add</span>(a, b):<br>    return a + b<br><br><br>def nop():<br>    pass<br><br><br><span class="hljs-comment"># 调用函数</span><br><span class="hljs-builtin-name">print</span>(<span class="hljs-builtin-name">add</span>(1, 2))<br><span class="hljs-builtin-name">print</span>(nop())<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-number">3</span><br><span class="hljs-attribute">None</span><br></code></pre></td></tr></table></figure>
+<p>1.参数传递<br>对于函数的调用者来说，需要知道如何传递正确的参数,才能正常调用函数。参数传递有无参数、必需参数、关键字参数、默认参数、不定长参数几种情况。无参数的函数，主要在内部执行逻辑内容，执行完成后，返回结果。</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 无参数函数</span><br>def opt():<br>    <span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;逻辑1&quot;</span>)<br>    <span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;逻辑...&quot;</span>)<br>    return <span class="hljs-literal">True</span><br><br><br><span class="hljs-comment"># 调用时不传参数</span><br>result = opt()<br><span class="hljs-builtin-name">print</span>(result)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight lasso"><table><tr><td class="code"><pre><code class="hljs lasso">逻辑<span class="hljs-number">1</span><br>逻辑<span class="hljs-params">...</span><br><span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
+<p>带有固定参数的函数，可通过位置顺序和关键字进行调用，用关键字调用时，位置可调整。如果函数参数中有默认值，不传递时，会使用默认值。</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 有参数函数</span><br>def <span class="hljs-builtin-name">add</span>(name, <span class="hljs-attribute">age</span>=10):<br>    <span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;姓名&quot;</span>, name)<br>    <span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;年龄&quot;</span>, age)<br>    return 1<br><br><br><span class="hljs-comment"># 按位置顺序调用</span><br><span class="hljs-builtin-name">print</span>(<span class="hljs-builtin-name">add</span>(<span class="hljs-string">&quot;东阳&quot;</span>, 20))<br><span class="hljs-comment"># 用关键字调用</span><br><span class="hljs-builtin-name">print</span>(<span class="hljs-builtin-name">add</span>(<span class="hljs-attribute">age</span>=25, <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;雷公&quot;</span>))<br><span class="hljs-comment"># 只传递姓名,年龄用默认值</span><br><span class="hljs-builtin-name">print</span>(<span class="hljs-builtin-name">add</span>(<span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;厉害&quot;</span>))<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">姓名 东阳<br>年龄 20<br>1<br>姓名 雷公<br>年龄 25<br>1<br>姓名 厉害<br>年龄 10<br>1<br></code></pre></td></tr></table></figure>
+<p>不定长参数，是说传递参数的数量是可变的，可以是1个、2个到任意个，还可以是0个。像计算不确定整数的和，用这个就和合适，不定长参数用<em>标识。实际上，这些可变参数在函数调用时自动组装为一个元组。传递列表、元组、集合这些内容在变量前面加</em>。</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 不定长参数</span><br><span class="hljs-attribute">def</span> calc(*numbers):<br>    <span class="hljs-attribute">data_sum</span> = <span class="hljs-number">0</span><br>    <span class="hljs-attribute">for</span> n in numbers:<br>        <span class="hljs-attribute">data_sum</span> += n<br>    <span class="hljs-attribute">return</span> data_sum<br><br><br><span class="hljs-comment"># 传递逐个内容</span><br><span class="hljs-attribute">print</span>(calc(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>))<br><span class="hljs-comment"># 传递元组</span><br><span class="hljs-attribute">print</span>(calc(*(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>)))<br><span class="hljs-comment"># 传递列表</span><br><span class="hljs-attribute">print</span>(calc(*[<span class="hljs-number">6</span>, <span class="hljs-number">8</span>]))<br><span class="hljs-comment"># 传递集合</span><br><span class="hljs-attribute">print</span>(calc(*&#123;<span class="hljs-number">8</span>, <span class="hljs-number">12</span>&#125;))<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">30<br>10<br>14<br>20<br></code></pre></td></tr></table></figure>
+<p>不定长参数既然可以表示元组(可传递字符串、元组、列表、集合内容)，那字典呢？–也是可以，用<strong>标识。虽然*和</strong>等可以一起组合使用，但建议不要把程序搞得很复杂。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 不定长参数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dict_util</span>(<span class="hljs-params">key, **kw</span>):</span><br>    <span class="hljs-keyword">if</span> key <span class="hljs-keyword">in</span> kw:<br>        <span class="hljs-built_in">print</span>(key, <span class="hljs-string">&quot;存在&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> kw.items():<br>            <span class="hljs-built_in">print</span>(k, v)<br>        <span class="hljs-built_in">print</span>(key, <span class="hljs-string">&quot;不存在&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br><br>extra = &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;gao&quot;</span>, <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">18</span>&#125;<br><span class="hljs-comment"># 调用函数</span><br>dict_util(<span class="hljs-string">&quot;phone&quot;</span>, **extra)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">name</span> gao<br><span class="hljs-attribute">age</span> <span class="hljs-number">18</span><br><span class="hljs-attribute">phone</span> 不存在<br></code></pre></td></tr></table></figure>
+<p>2.匿名函数<br>使用lambda和冒号定义匿名函数，冒号前面表示函数的参数，后面是表达式。表达式只能有一个，其结果返回值，不用写return。匿名函数也是一个对象，可以把它赋值给一个变量，再利用变量来调用该函数。语法结构为：<br>lambda 参数列表:表达式</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 用lambda定义匿名函数</span><br><span class="hljs-attribute">f</span> = lambda a, b, c: a + b + c<br><span class="hljs-attribute">print</span>(<span class="hljs-string">&quot;和为:&quot;</span>, f(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>))<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">和为: 6</span><br></code></pre></td></tr></table></figure>
+<p>3.值的改变<br>在函数传递参数过程中，外部的变量可能会被改变，也可能不会改变，就看传递的是不可变对象还是可变对象。一般整型、浮点型、字符串等基本数据类型，为不可变对象，数据结构中列表、集合、字典为可变对象，元组为不可变对象。<br>传递整型(不可变对象)给函数时，在函数内部的改变不会影响外部。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment"># 传递整型值,不改变内容</span><br>def change(<span class="hljs-keyword">a</span>):<br>    <span class="hljs-keyword">a</span> = <span class="hljs-number">99</span><br>    print(<span class="hljs-keyword">a</span>)<br><br><br><span class="hljs-comment"># 要传递参数值</span><br><span class="hljs-keyword">a</span> = <span class="hljs-number">10</span><br>change(<span class="hljs-keyword">a</span>)<br>print(<span class="hljs-keyword">a</span>)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">99<br>10<br></code></pre></td></tr></table></figure>
+<p>那如果真的需要在函数内部，就可以改变外部值时，该怎么办?–用global关键字了就可以解决。如果函数内嵌套函数时，出现内部函数改变外部函数的变量时，使用nonlocal关键字。但建议不要把程序搞得那么复杂。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment"># 传递整型值,可以用global改变内容</span><br>def change():<br>    <span class="hljs-built_in">global</span> <span class="hljs-keyword">a</span><br>    <span class="hljs-keyword">a</span> = <span class="hljs-number">99</span><br>    print(<span class="hljs-keyword">a</span>)<br><br><br><span class="hljs-comment"># 要传递参数值</span><br><span class="hljs-keyword">a</span> = <span class="hljs-number">10</span><br>change()<br>print(<span class="hljs-keyword">a</span>)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">99<br>10<br></code></pre></td></tr></table></figure>
+<p>传递列表(可变对象)给函数时，在函数内部的改变会同时影响外部。</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"># 传递列表(可变对象)<br>def <span class="hljs-keyword">change</span>(<span class="hljs-keyword">ls</span>):<br>    <span class="hljs-keyword">ls</span>.<span class="hljs-keyword">append</span>(<span class="hljs-number">5</span>)<br>    <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;函数内的值: &quot;</span>, <span class="hljs-keyword">ls</span>)<br><br><br>lst = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><span class="hljs-keyword">change</span>(lst)<br><span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;函数外的值: &quot;</span>, lst)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight accesslog"><table><tr><td class="code"><pre><code class="hljs accesslog">函数内的值:  <span class="hljs-string">[1, 2, 3, 5]</span><br>函数外的值:  <span class="hljs-string">[1, 2, 3, 5]</span><br></code></pre></td></tr></table></figure>
+<p>有关函数定义的内容到此结束。</p>
+<h3 id="5-2-常用函数"><a href="#5-2-常用函数" class="headerlink" title="5.2 常用函数"></a>5.2 常用函数</h3><p>Python内置了很多函数，除了之前说过的生成数列的range()、求最大值的max()、求最小值的min()、求长度的len()、排序用的sorted()等函数外，还有一些常用函数，如绝对值、四舍五入、随机数等。<br>1.计算相关<br>(1) abs(a)：求取绝对值。正负数的绝对为正数，0的绝对值还是0.</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 求数值绝对值</span><br><span class="hljs-attribute">i</span> = abs(-<span class="hljs-number">66</span>.<span class="hljs-number">6</span>)<br><span class="hljs-attribute">print</span>(i)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">66</span>.<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<p>(2) divmod(a,b): 获取商和余数。结果是元组，第1位为商，第2位是余数。</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 求商和余数</span><br><span class="hljs-attribute">t</span> = divmod(<span class="hljs-number">7</span>, <span class="hljs-number">2</span>)<br><span class="hljs-attribute">print</span>(<span class="hljs-string">&quot;商是：&quot;</span>, t[<span class="hljs-number">0</span>])<br><span class="hljs-attribute">print</span>(<span class="hljs-string">&quot;余数是：&quot;</span>, t[<span class="hljs-number">1</span>])<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">商是： 3<br>余数是： 1<br></code></pre></td></tr></table></figure>
+<p>(3) sum(list) : 计算元组、列表或集合元素的和。</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 计算元组的和</span><br><span class="hljs-attribute">t</span> = sum((<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>))<br><span class="hljs-attribute">print</span>(t)<br><span class="hljs-comment"># 计算列表的和</span><br><span class="hljs-attribute">lst</span> = sum([<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>])<br><span class="hljs-attribute">print</span>(lst)<br><span class="hljs-comment"># 计算集合的和</span><br><span class="hljs-attribute">set1</span> = sum([<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])<br><span class="hljs-attribute">print</span>(set<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">6<br>15<br>24<br></code></pre></td></tr></table></figure>
+<p>(4) pow(a,b) : 获取乘方数。</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 求乘方的结果</span><br><span class="hljs-attribute">p</span> = pow(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)<br><span class="hljs-attribute">print</span>(p)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">8<br></code></pre></td></tr></table></figure>
+<p>(5) round(a,b) : 获取指定位数的小数。a代表浮点数，b代表要保留的位数。返回浮点数x的四舍五入值。</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 求四舍五入</span><br><span class="hljs-attribute">i</span> = <span class="hljs-number">3</span>.<span class="hljs-number">51264</span><br><span class="hljs-comment"># 取整数</span><br><span class="hljs-attribute">print</span>(round(i))<br><span class="hljs-comment"># 保留两位小数</span><br><span class="hljs-attribute">print</span>(round(i, <span class="hljs-number">2</span>))<br><span class="hljs-comment"># 负数的四舍五入</span><br><span class="hljs-attribute">i</span> = -<span class="hljs-number">125</span>.<span class="hljs-number">9351</span><br><span class="hljs-attribute">print</span>(round(i, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><code class="hljs diff">4<br>3.51<br><span class="hljs-deletion">-125.94</span><br></code></pre></td></tr></table></figure>
+<p>(6) ceil()得到的是最接近原数但大于原数的整型 ，既向上取整。</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua"># 取最接近但大于原值的整数<br>import <span class="hljs-built_in">math</span><br><br>i = <span class="hljs-number">6.2451</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">ceil</span>(i))<br>i = <span class="hljs-number">-6.2451</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">ceil</span>(i))<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><code class="hljs diff">7<br><span class="hljs-deletion">-6</span><br></code></pre></td></tr></table></figure>
+<p>(7) floor()得到的是最接近原数但小于原数的整型 ，既向下取整。</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua"># 取最接近但小于原值的整数<br>import <span class="hljs-built_in">math</span><br><br>i = <span class="hljs-number">3.51264</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">floor</span>(i))<br>i = <span class="hljs-number">-3.51264</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">math</span>.<span class="hljs-built_in">floor</span>(i))<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><code class="hljs diff">3<br><span class="hljs-deletion">-4</span><br></code></pre></td></tr></table></figure>
+<p>(8) int() 直接截去小数部分,返回整型。</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 截取整数</span><br><span class="hljs-attribute">i</span> = <span class="hljs-number">8</span>.<span class="hljs-number">36412</span><br><span class="hljs-attribute">print</span>(int(i))<br><span class="hljs-attribute">i</span> = -<span class="hljs-number">8</span>.<span class="hljs-number">36412</span><br><span class="hljs-attribute">print</span>(int(i))<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><code class="hljs diff">8<br><span class="hljs-deletion">-8</span><br></code></pre></td></tr></table></figure>
+<p>2.随机数<br>随机数应用挺多的，如随机生成6位数密码，随时生成短信验证码，登录验证码；还有抽奖时，通过随机数产生的值去对应奖品等。<br>(1) random.random()生成一个0到1.0之间的随机浮点数。</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino"># 获取<span class="hljs-number">0</span>~<span class="hljs-number">1.0</span>中的随时浮点数<br><span class="hljs-keyword">import</span> random<br><br>f = random.<span class="hljs-built_in">random</span>()<br><span class="hljs-built_in">print</span>(f)<br></code></pre></td></tr></table></figure>
+<p>输出结果(随机生成，结果会不一样)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>.<span class="hljs-number">9392144902656036</span><br></code></pre></td></tr></table></figure>
+<p>(2) random.uniform(a，b)生成一个a到b之间的随机浮点数。</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 获取范围内的随时浮点数</span><br><span class="hljs-attribute">import</span> random<br><br><span class="hljs-attribute">f</span> = random.uniform(<span class="hljs-number">286</span>.<span class="hljs-number">20</span>, <span class="hljs-number">951</span>.<span class="hljs-number">15</span>)<br><span class="hljs-attribute">print</span>(f)<br></code></pre></td></tr></table></figure>
+<p>输出结果(随机生成，结果会不一样)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">581</span>.<span class="hljs-number">1038876738178</span><br></code></pre></td></tr></table></figure>
+<p>(3) random.randint(a，b)生成一个a到b之间的随机整数。函数返回数字 N ，N 为 a到b 之间的数字（a &lt;= N &lt;= b），包含 a 和 b。</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino"># 获取范围内的随时整数<br><span class="hljs-keyword">import</span> random<br><br>i = random.<span class="hljs-built_in">randint</span>(<span class="hljs-number">100000</span>, <span class="hljs-number">999999</span>)<br><span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+<p>输出结果(随机生成，结果会不一样)</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">40<br></code></pre></td></tr></table></figure>
+<p>(4) random.randrange(start,stop,step) 按步长随机在上下限范围内取一个随机数。</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 随机获取一个偶数值</span><br><span class="hljs-attribute">import</span> random<br><br><span class="hljs-attribute">i</span> = random.randrange(<span class="hljs-number">0</span>, <span class="hljs-number">101</span>, <span class="hljs-number">2</span>)<br><span class="hljs-attribute">print</span>(i)<br></code></pre></td></tr></table></figure>
+<p>输出结果(随机生成，结果会不一样)</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">40<br></code></pre></td></tr></table></figure>
+<p>(5) random.sample(str,n)随机的选取n个字符,结果为列表。</p>
+<figure class="highlight processing"><table><tr><td class="code"><pre><code class="hljs processing"># 随机抽取元素<br><span class="hljs-keyword">import</span> <span class="hljs-built_in">random</span><br><br>lst = <span class="hljs-built_in">random</span>.sample(<span class="hljs-string">&quot;Welcome to Python.&quot;</span>, <span class="hljs-number">3</span>)<br>s = <span class="hljs-string">&quot;&quot;</span>.<span class="hljs-built_in">join</span>(lst)<br><span class="hljs-built_in">print</span>(s)<br></code></pre></td></tr></table></figure>
+<p>输出结果(随机生成，结果会不一样)</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">mo</span><br></code></pre></td></tr></table></figure>
+<p>(6) random.choice(<list>)从列表中随机返回一个元素。</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino"># 随机获取一个元素<br><span class="hljs-keyword">import</span> random<br><br>s = random.<span class="hljs-built_in">choice</span>([<span class="hljs-string">&quot;124dds&quot;</span>, <span class="hljs-string">&quot;ew6210&quot;</span>, <span class="hljs-string">&quot;98rac1&quot;</span>])<br><span class="hljs-built_in">print</span>(s)<br></code></pre></td></tr></table></figure>
+<p>输出结果(随机生成，结果会不一样)</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">124dds<br></code></pre></td></tr></table></figure>
+<p>(7) random.shuffle(<list>)对list列表随机打乱顺序，也就是洗牌。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment"># 洗牌</span><br>import <span class="hljs-built_in">random</span><br><br><span class="hljs-keyword">item</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>]<br><span class="hljs-built_in">random</span>.shuffle(<span class="hljs-keyword">item</span>)<br>print(<span class="hljs-keyword">item</span>)<br></code></pre></td></tr></table></figure>
+<p>输出结果(随机生成，结果会不一样)</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json">[<span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>]<br></code></pre></td></tr></table></figure>
+<p>有关常用函数的内容到此结束。</p>
+<h3 id="5-3-日期函数"><a href="#5-3-日期函数" class="headerlink" title="5.3 日期函数"></a>5.3 日期函数</h3><p>时光不可追，往事不可回。以往创建的数据，如若没有日期做标识，不堪回首。几乎任何一个产品都会用到日期，如登录日期、创建日期、修改日期等。正因如此，编程语言中，几乎都有内置日期函数。<br>1.当前日期<br>获取日期和时间的有datetime和time模块。其中datetime模块对time模块进行了封装。用datetime.now()获取到当前日期和时间，并可在返回结果当中，可只取其中的一部分内容如年份、月份。</p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix"><span class="hljs-comment">#获取当前日期和日期</span><br>from datetime <span class="hljs-built_in">import</span> datetime<br><br><span class="hljs-attr">now</span> = datetime.now()<br>print(now)<br><span class="hljs-comment"># 获取年份、月份等</span><br><span class="hljs-attr">y</span> = now.year  <span class="hljs-comment"># 年份</span><br><span class="hljs-attr">M</span> = now.month  <span class="hljs-comment"># 月份</span><br><span class="hljs-attr">d</span> = now.day  <span class="hljs-comment"># 天</span><br><span class="hljs-attr">h</span> = now.hour  <span class="hljs-comment"># 时</span><br><span class="hljs-attr">m</span> = now.minute  <span class="hljs-comment"># 分</span><br><span class="hljs-attr">s</span> = now.second  <span class="hljs-comment"># 秒</span><br>print(y, M, d, h, m, s)<br></code></pre></td></tr></table></figure>
+<p>输出结果(以你电脑的时间为准)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">15</span> <span class="hljs-number">19</span>:<span class="hljs-number">37</span>:<span class="hljs-number">25</span>.<span class="hljs-number">446010</span><br><span class="hljs-attribute">2020</span> <span class="hljs-number">10</span> <span class="hljs-number">15</span> <span class="hljs-number">19</span> <span class="hljs-number">37</span> <span class="hljs-number">25</span><br></code></pre></td></tr></table></figure>
+<p>开发产品时，用时间戳表示唯一值或比较，是常有的事。时间戳可通过time模块获取。</p>
+<figure class="highlight perl"><table><tr><td class="code"><pre><code class="hljs perl"><span class="hljs-comment"># 获取当前日期和日期</span><br>import <span class="hljs-keyword">time</span><br>t = time.time()<br><span class="hljs-comment"># 10位时间戳</span><br><span class="hljs-keyword">print</span>(<span class="hljs-keyword">int</span>(t))<br><span class="hljs-comment"># 13位时间戳</span><br><span class="hljs-keyword">print</span>(<span class="hljs-keyword">int</span>(t*<span class="hljs-number">1000</span>))<br></code></pre></td></tr></table></figure>
+<p>输出结果(以你电脑的时间为准)</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><code class="hljs dns"><span class="hljs-number">1602668344</span><br><span class="hljs-number">1602668344275</span><br></code></pre></td></tr></table></figure>
+<p>2.日期计算<br>两个日期相差多少天， 今天的n天后的日期，明天的日期等这种情况，就需要进行日期计算，它可通过datetime.timedelta()方法实现。<br>(1) 获取昨天日期，利用当前日期减去一天</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-meta"># 计算出昨天日期</span><br><span class="hljs-keyword">from</span> datetime import datetime, timedelta<br>now = datetime.now().<span class="hljs-built_in">date</span>()<br><span class="hljs-built_in">date</span> = now - timedelta(days=<span class="hljs-number">1</span>)<br><span class="hljs-keyword">print</span>(<span class="hljs-built_in">date</span>)<br></code></pre></td></tr></table></figure>
+<p>输出结果(以你电脑的时间为准)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">16</span><br></code></pre></td></tr></table></figure>
+<p>(2) 获取20后的日期，利用当前日期加上20天</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-meta"># 算出20天后的日期</span><br><span class="hljs-keyword">from</span> datetime import datetime, timedelta<br>now = datetime.now().<span class="hljs-built_in">date</span>()<br><span class="hljs-built_in">date</span> = now + timedelta(days=<span class="hljs-number">20</span>)<br><span class="hljs-keyword">print</span>(<span class="hljs-built_in">date</span>)<br></code></pre></td></tr></table></figure>
+<p>输出结果(以你电脑的时间为准)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2020</span>-<span class="hljs-number">11</span>-<span class="hljs-number">01</span><br></code></pre></td></tr></table></figure>
+<p>3.格式日期<br>格式化日期，在编程中，是常用的，如2019-01-01这种格式。格式使用strftime(format)方法,format内容由特殊的字符组成。%y两位数的年份表示(00-99)，%Y四位数的年份表示(000-9999)，%m月份(01-12)，%d 月内中的一天(0-31)，%H 24小时制，小时数(0-23)，%I 12小时制，小时数(01-12)，%M 分钟数(00=59)，%S秒(00-59)。</p>
+<figure class="highlight perl"><table><tr><td class="code"><pre><code class="hljs perl"><span class="hljs-comment"># 日期格式化</span><br>from datetime import datetime<br>now = datetime.now()<br><span class="hljs-keyword">print</span>(now)<br><span class="hljs-comment"># 日期转化为字符串</span><br>s = datetime.strftime(now, <span class="hljs-string">&quot;%Y-%m-%d&quot;</span>)<br><span class="hljs-keyword">print</span>(s)<br><span class="hljs-comment"># 日期转化为整型</span><br>s = datetime.strftime(now, <span class="hljs-string">&quot;%Y%m%d&quot;</span>)<br><span class="hljs-keyword">print</span>(<span class="hljs-keyword">int</span>(s))<br><span class="hljs-comment"># 时分秒</span><br>h = datetime.strftime(now, <span class="hljs-string">&quot;%H:%M:%S&quot;</span>)<br><span class="hljs-keyword">print</span>(h)<br></code></pre></td></tr></table></figure>
+<p>输出结果(以你电脑的时间为准)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">16</span> <span class="hljs-number">19</span>:<span class="hljs-number">51</span>:<span class="hljs-number">45</span>.<span class="hljs-number">918305</span><br><span class="hljs-attribute">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">16</span><br><span class="hljs-attribute">20201016</span><br><span class="hljs-attribute">19</span>:<span class="hljs-number">51</span>:<span class="hljs-number">45</span><br></code></pre></td></tr></table></figure>
+<p>4.日期库<br>Python针对日期时间的处理提供了大量的package，类和方法，但在使用上挺繁琐，挺别扭的。好在有一些好用的第三方日期库可供使用，特别是Arrow。它提供了一个合理的、人性化的方法来操作日期。要使用Arrow库，先通过：pip install arrow或pip3 install arrow下载和安装。<br>用过arrow之后，轻轻舒了一口气，感觉就是爽，爽，爽。</p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix"><span class="hljs-comment"># 引入arrow模块</span><br><span class="hljs-built_in">import</span> arrow<br><br><span class="hljs-attr">t</span> = arrow.now()<br><span class="hljs-comment"># 获取年份和月份</span><br><span class="hljs-attr">y</span> = t.datetime.year<br><span class="hljs-attr">m</span> = t.datetime.month<br>print(y, m)<br><span class="hljs-comment"># 时间戳</span><br><span class="hljs-attr">ts</span> = t.timestamp<br>print(ts)<br><span class="hljs-comment"># 日期格式化</span><br><span class="hljs-attr">f</span> = t.format(<span class="hljs-string">&quot;YYYY-MM-DD HH:mm:ss&quot;</span>)<br>print(f)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight basic"><table><tr><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">2020 </span><span class="hljs-number">10</span><br><span class="hljs-number">1602847983</span><br><span class="hljs-number">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">16</span> <span class="hljs-number">19</span>:<span class="hljs-number">33</span>:<span class="hljs-number">03</span><br></code></pre></td></tr></table></figure>
+<p>时间推移就是要获取某个时间之前的时间或者之后的时间，比如要获取相对于当前时间前一天的时间。Arrow在这方面的计算也挺方便的。</p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix"><span class="hljs-comment"># 计算出昨天日期</span><br><span class="hljs-built_in">import</span> arrow<br><span class="hljs-attr">t</span> = arrow.now()<br><span class="hljs-attr">t</span> = t.shift(<span class="hljs-attr">days=-1)</span><br><span class="hljs-attr">t</span> = t.format(<span class="hljs-string">&quot;YYYY-MM-DD&quot;</span>)<br>print(t)<br><span class="hljs-comment"># 算出明天日期</span><br><span class="hljs-attr">t</span> = arrow.now()<br><span class="hljs-attr">t</span> = t.shift(<span class="hljs-attr">days=1)</span><br><span class="hljs-attr">t</span> = t.format(<span class="hljs-string">&quot;YYYY-MM-DD&quot;</span>)<br>print(t)<br><span class="hljs-comment"># 算出三个月前的今天</span><br><span class="hljs-attr">t</span> = arrow.now()<br><span class="hljs-attr">t</span> = t.shift(<span class="hljs-attr">months=-3)</span><br><span class="hljs-attr">t</span> = t.format(<span class="hljs-string">&quot;YYYY-MM-DD&quot;</span>)<br>print(t)<br><span class="hljs-comment"># 日期转为整数</span><br><span class="hljs-attr">t</span> = arrow.now()<br><span class="hljs-attr">t</span> = t.format(<span class="hljs-string">&quot;YYYYMMDD&quot;</span>)<br>print(int(t))<br></code></pre></td></tr></table></figure>
+<p>输出结果(以你电脑的时间为准)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">13</span><br><span class="hljs-attribute">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">15</span><br><span class="hljs-attribute">2020</span>-<span class="hljs-number">07</span>-<span class="hljs-number">14</span><br><span class="hljs-attribute">20201014</span><br></code></pre></td></tr></table></figure>
+<p>有关函数的内容到此结束。</p>
+<h3 id="5-4-模块导入"><a href="#5-4-模块导入" class="headerlink" title="5.4 模块导入"></a>5.4 模块导入</h3><p>模块是一个包含所有你定义的函数和变量的文件，其后缀名是.py。模块可以被别的程序引入，以使用该模块中的函数等功能。<br>模块让你能够有逻辑地组织代码段，把相关的代码分配到一个模块里，能让你的代码更好用，更易懂。导入存在的模块，起到资源复用的作用。<br>1.import语句<br>用import导入模块(文件)跟其他编程语言是一样的，直接使用import 模块名1,模块2…,语句导即可。虽然一条import语句可以同时导入多个模块，但建议采用一条import语句只导入一个模块。这样做，除了可提高可读性外，删除也更方便。<br>import除了可以导入模块，也可以导入包下的所有模块，就是用import package1, package2…，但最好不要这样使用。</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">import <span class="hljs-built_in">math</span>  # 导入<span class="hljs-built_in">math</span>模块<br>import <span class="hljs-built_in">time</span>  # 导入<span class="hljs-built_in">time</span>时间模块<br><br># 用<span class="hljs-built_in">math</span>模块里<span class="hljs-built_in">pow</span>函数<br>a = <span class="hljs-built_in">math</span>.<span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(a)<br># 用<span class="hljs-built_in">time</span>模块里<span class="hljs-built_in">time</span>函数<br>b = <span class="hljs-built_in">time</span>.<span class="hljs-built_in">time</span>()<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
+<p>输出结果(时间结果以你电脑的为准)</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">8</span>.<span class="hljs-number">0</span><br><span class="hljs-attribute">1602720769</span>.<span class="hljs-number">0266612</span><br></code></pre></td></tr></table></figure>
+<p>2.from语句<br>除了可以导入整个模块外，Python还可以支持只导入其中的部分内容，如只导入某个函数。要实现这个，可用from 模块名 import name1,name2..语句。</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">from <span class="hljs-built_in">math</span> import <span class="hljs-built_in">pow</span><br><br># 导入<span class="hljs-built_in">math</span>模块里<span class="hljs-built_in">pow</span>函数<br>a = <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, <span class="hljs-number">6</span>)<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">64</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<p>当然，如果要导入模块的全部内容也是可以的，就是用from 模块名 import *的方式。只是这种方式，会存在一些纰漏(如函数重名),所以建议少用或不用。</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">from <span class="hljs-built_in">math</span> import *<br><br># 用<span class="hljs-built_in">math</span>模块里的<span class="hljs-built_in">floor</span>函数<br>m = <span class="hljs-built_in">floor</span>(<span class="hljs-number">102.25</span>)<br><span class="hljs-built_in">print</span>(m)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs">102<br></code></pre></td></tr></table></figure>
+<p>除了导入部分内容外，实际上from语句，还可以简化前缀。<br>(1) 完整导入</p>
+<figure class="highlight mizar"><table><tr><td class="code"><pre><code class="hljs mizar"># ---用<span class="hljs-keyword">from</span>导入---<br><span class="hljs-keyword">from</span> datetime import datetime<br><br><span class="hljs-keyword">now</span> = datetime.<span class="hljs-keyword">now</span>()<br>print(<span class="hljs-keyword">now</span>)<br></code></pre></td></tr></table></figure>
+<p>输出结果(以你电脑时间为准）</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">15</span> <span class="hljs-number">20</span>:<span class="hljs-number">19</span>:<span class="hljs-number">46</span>.<span class="hljs-number">169928</span><br></code></pre></td></tr></table></figure>
+<p>(2) 简化导入</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino"># ---用<span class="hljs-keyword">import</span>导入---<br><span class="hljs-keyword">import</span> datetime<br><br>now = datetime.datetime.<span class="hljs-built_in">now</span>()<br><span class="hljs-built_in">print</span>(now)<br></code></pre></td></tr></table></figure>
+<p>输出结果(以你电脑时间为准）</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2020</span>-<span class="hljs-number">10</span>-<span class="hljs-number">15</span> <span class="hljs-number">20</span>:<span class="hljs-number">21</span>:<span class="hljs-number">32</span>.<span class="hljs-number">981823</span><br></code></pre></td></tr></table></figure>
+<p>3.as用法<br>如果导入的模块名比较长，用起来比较”费劲”时，可以用as给它举个别名。import和from语句都可以。</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"># <span class="hljs-comment">---用as取别名---</span><br><span class="hljs-keyword">import</span> <span class="hljs-type">xml</span>.etree.cElementTree <span class="hljs-keyword">as</span> Et<br><br>c = Et.<span class="hljs-keyword">Comment</span>(&quot;&lt;book&gt;12天搞定Python&lt;/book&gt;&quot;)<br>print(c.text)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">book</span>&gt;</span>12天搞定Python<span class="hljs-tag">&lt;/<span class="hljs-name">book</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>4.重名区分<br>在开发过程中，文件(模块)名出现重名的几率挺高的。如果不加以区分，那就老鼠、老虎傻傻分不清了。区分模块名，可以包。包治百病，包(package)就是有一个__.init__.py特殊文件在里面的文件夹，包(文件夹)用来存放.py文件。其中__init__.py，可以为空文件。<br>包里面的文件名，不要与package同名，也不要使用关键字。<br>用一个工程(mk)来说明一下。在utils和model包下，都有一个名叫sqlutil.py的模块，用于处理sql语句。当在controller用到sqlutil.py时，指定包名，以便区分。</p>
+<p>model下sqlutil.py(动手新建，不要偷懒)文件的内容</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"># 拼接<span class="hljs-keyword">sql</span>语句<br>def <span class="hljs-keyword">join</span>(table=&quot;&quot;):<br>    <span class="hljs-keyword">sql</span> = &quot;select * from &#123;0&#125;&quot;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">sql</span>.format(<span class="hljs-keyword">table</span>)<br>utils下sqlutil.py(动手新建，不要偷懒)文件的内容<br><br># 拼接<span class="hljs-keyword">sql</span>语句<br>def <span class="hljs-keyword">join</span>(table=&quot;&quot;):<br>    <span class="hljs-keyword">sql</span> = &quot;select * from &#123;0&#125;&quot;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">sql</span>.format(<span class="hljs-keyword">table</span>)<br>controller下test.py文件的内容<br><br># 导入utils下的模块<br><span class="hljs-keyword">from</span> utils <span class="hljs-keyword">import</span> sqlutil<br><br>s = sqlutil.<span class="hljs-keyword">join</span>(&quot;customers&quot;)<br>print(s)<br></code></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> customers<br></code></pre></td></tr></table></figure>
+<p>好了，有关模块导入的内容到此为止。</p>
+
+    </div>
+</div>
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 109;
+        width: 600px !important;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            width: 88%
+        }
+    }
+</style>
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
+    
+
+    
+    <a href="/2021/10/23/python06/">
+        <div class="next">
+            <span>下一篇</span>
+            <p>04.数据结构(下)</p>
+        </div>
+    </a>
+    
+</div>
+		
+<link rel="stylesheet" href="/css/food.css">
+
+<div class="footer">
+	<div class="Copyright">
+		©2021 By Dr.Qiu, Powered By <a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">HEXO</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/ictrlx">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Coding">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: block;
+            border-radius: 50%;
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            transition: border .5s;
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 30px;
+            height: 30px;
+            margin-top: 17.5px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
+</script>
+
+	</body>
+
+</html>
