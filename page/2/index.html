@@ -3,7 +3,7 @@
 
 	<head>
 		
-<title>文章归档-剪切板</title>
+<title>剪切板-CtrlX-剪切板</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -20,8 +20,7 @@
 
 	<body>
 		
-
-<link rel="stylesheet" href="/css/archive.css">
+<link rel="stylesheet" href="/css/home.css">
 
 
 <link rel="stylesheet" href="/css/header.css">
@@ -37,22 +36,22 @@
 				<ul>
 					
 						
-								<li>
-									<a href="/">
-										首页
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
 							<li class="select">
-								<a href="/archives">
-									归档
+								<a href="/">
+									首页
 								</a>
 								<span class="dot"></span>
 							</li>
 							
+									
+						
+								<li>
+									<a href="/archives">
+										归档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
 									
 						
 								<li>
@@ -234,83 +233,59 @@
 		<script>
 			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
 		</script>
-
 <div class="header-bg">
-    <div class="bg-content">
-        <span>
-            <img src="/image/archive.svg" alt="CtrlX">
-        </span>
-
-        <h2>居然用了 1 年一共才写了 10 篇文章!</h2>
-    </div>
+	<div class="bg-content">
+		<span>
+			<img class="site-logo" src="/image/logo.png" alt="Q">
+		</span>
+		<h2>
+			Stay hungry , stay foolish.
+		</h2>
+	</div>
 </div>
-<div class="article-content">
-    <div id="article" class="content">
-        
-        <p>
-            2021
-        </p>
-        
-        <a href="/2021/10/25/python08/">
-            <span>06.面向对象</span>
-            <time>10-25</time>
-        </a>
-        
-        <a href="/2021/10/25/python07/">
-            <span>05.函数详解</span>
-            <time>10-25</time>
-        </a>
-        
-        <a href="/2021/10/23/python06/">
-            <span>04.数据结构(下)</span>
-            <time>10-23</time>
-        </a>
-        
-        <a href="/2021/10/08/python05/">
-            <span>04.数据结构(上)</span>
-            <time>10-08</time>
-        </a>
-        
-        <a href="/2021/10/07/python04/">
-            <span>03.控制语句</span>
-            <time>10-07</time>
-        </a>
-        
-        <a href="/2021/10/07/python03/">
-            <span>02.基础语法(下)</span>
-            <time>10-07</time>
-        </a>
-        
-        <a href="/2021/10/05/python02/">
-            <span>02.基础语法(上)</span>
-            <time>10-05</time>
-        </a>
-        
-        <a href="/2021/09/30/python01/">
-            <span>01.Python有什么用？</span>
-            <time>09-30</time>
-        </a>
-        
-        <a href="/2021/08/27/0001/">
-            <span>STAY HUNGRY , STAY FOOLISH.</span>
-            <time>08-27</time>
-        </a>
-        
-        <a href="/2021/07/17/hello-world/">
-            <span>Hello World</span>
-            <time>07-17</time>
-        </a>
-        
-        
-    </div>
+<div class="main">
+	<div class="feed">
+		
+			<div class="feed-display">
+				<a href="/2021/07/17/hello-world/">
+					<h2 class="feed-title">
+						Hello World
+					</h2>
+					
+						<img src="/image/bannor/helloworld.jpg" alt="Quiet">
+						
+				</a>
+				<div class="feed-meat">
+					<div class="meat-info">
+						<div class="info-auth">
+							<a href="">
+								Dr.Qiu
+							</a>
+						</div>
+						<div class="info-data">
+							2021-07-17
+						</div>
+					</div>
+					<div class="meat-type"></div>
+				</div>
+			</div>
+			
+	</div>
+</div>
+<div class="change-page">
+	
+		<div class="p-page">
+			<a href="/">
+				<div class="previous">
+					上一页
+				</div>
+			</a>
+		</div>
+		
+			
 </div>
 
-
-
-
-<script>
-    $(function () { $('.article-content').addClass('content-move'); })
-</script>
+<script>$(function () { $('.feed').addClass('move'); })</script>
 		
 <link rel="stylesheet" href="/css/food.css">
 
